@@ -1,10 +1,15 @@
 package vestie.member.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import vestie.member.domain.Gender;
 import vestie.member.domain.Member;
+import vestie.member.dto.TokenDto;
 import vestie.member.exception.DuplicateUsernameException;
+import vestie.member.exception.PasswordMismatchException;
+import vestie.member.exception.UsernameNotFoundException;
+import vestie.member.jwt.JwtTokenProvider;
 import vestie.member.repository.MemberRepository;
 import vestie.member.request.SignUpRequest;
 
@@ -16,8 +21,10 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    private final JwtTokenProvider jwtTokenProvider;
 
     public Long signUp(SignUpRequest signUpRequest) {
+        // TODO password 인코딩
         checkDuplicateUsername(signUpRequest.getUsername());
 
         Member member = Member.builder()
@@ -37,5 +44,14 @@ public class MemberService {
         if(memberRepository.findByUsername(username).isPresent()){
             throw new DuplicateUsernameException("이미 존재하는 username 입니다.");
         }
+    }
+
+    public TokenDto login(String username, String password) {
+        Member member = memberRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 username 입니다."));
+        if(!member.getPassword().equals(password)){
+            throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
+        }
+        return TokenDto.builder().token(jwtTokenProvider.createToken(member)).build();
     }
 }

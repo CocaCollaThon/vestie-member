@@ -1,17 +1,32 @@
 spring:
+  profiles:
+    include: jwt
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/vestie?serverTimezone=UTC@characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/vestie?serverTimezone=Asia/Seoul
     username: root
     password: r1234!
+
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 100
         dialect: org.hibernate.dialect.MySQL57Dialect
 
-logging:
-  level: debug
+loggin.level:
+  org.hibernate.SQL: debug
+
+
+
+#eureka:
+#  client:
+#    register-with-eureka: true # 레지스트리에 자신을 등록할지 여부
+#    fetch-registry: true # 레지스트리에 있는 정보를 가져올지 여부
+#    registry-fetch-interval-seconds: 10 # 서비스 목록 캐싱 10초마다
+#    disable-delta: true # 캐시 변경된 부분만 업데이트
+#  instance:
+#    lease-renewal-interval-in-seconds: 3 # 3초마다 하트비트 전송
+#    lease-expiration-duration-in-seconds: 10 # 10초까지 하트비트가 수신되지 않으면 서비스 등록 해제
