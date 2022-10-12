@@ -1,4 +1,4 @@
-package vestie.member.dto;
+package vestie.member.global.dto;
 
 import lombok.*;
 

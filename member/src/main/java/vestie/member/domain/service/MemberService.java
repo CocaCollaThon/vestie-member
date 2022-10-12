@@ -1,19 +1,16 @@
-package vestie.member.service;
+package vestie.member.domain.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import vestie.member.domain.Gender;
 import vestie.member.domain.Member;
-import vestie.member.dto.TokenDto;
-import vestie.member.exception.DuplicateUsernameException;
-import vestie.member.exception.PasswordMismatchException;
-import vestie.member.exception.UsernameNotFoundException;
-import vestie.member.jwt.JwtTokenProvider;
-import vestie.member.repository.MemberRepository;
-import vestie.member.request.SignUpRequest;
-
-import java.util.Optional;
+import vestie.member.domain.controller.request.SignUpRequest;
+import vestie.member.domain.repository.MemberRepository;
+import vestie.member.global.dto.TokenDto;
+import vestie.member.global.exception.DuplicateUsernameException;
+import vestie.member.global.exception.PasswordMismatchException;
+import vestie.member.global.exception.UsernameNotFoundException;
+import vestie.member.global.jwt.JwtTokenProvider;
 
 @Service
 @RequiredArgsConstructor

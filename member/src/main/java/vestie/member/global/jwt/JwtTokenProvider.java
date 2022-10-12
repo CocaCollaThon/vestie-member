@@ -1,4 +1,4 @@
-package vestie.member.jwt;
+package vestie.member.global.jwt;
 
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import vestie.member.domain.Member;
 
 import javax.annotation.PostConstruct;
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package vestie.member.presentation;
+package vestie.member.domain.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vestie.member.service.MemberService;
-import vestie.member.request.SignUpRequest;
+import vestie.member.domain.controller.request.SignUpRequest;
+import vestie.member.domain.service.MemberService;
 
 @RestController
 @RequiredArgsConstructor

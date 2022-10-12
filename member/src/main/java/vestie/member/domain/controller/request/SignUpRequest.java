@@ -1,7 +1,6 @@
-package vestie.member.request;
+package vestie.member.domain.controller.request;
 
 import lombok.*;
-import vestie.member.domain.Gender;
 
 @Getter
 @Setter

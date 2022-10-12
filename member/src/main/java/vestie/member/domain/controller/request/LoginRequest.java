@@ -1,4 +1,4 @@
-package vestie.member.request;
+package vestie.member.domain.controller.request;
 
 import lombok.*;
 

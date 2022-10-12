@@ -1,4 +1,4 @@
-package vestie.member.exception.handler;
+package vestie.member.global.exception.handler;
 
 import lombok.*;
 
