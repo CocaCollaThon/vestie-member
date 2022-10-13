@@ -2,6 +2,7 @@ package vestie.member.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vestie.member.domain.Gender;
 import vestie.member.domain.Member;
 import vestie.member.domain.controller.request.SignUpRequest;
@@ -14,6 +15,7 @@ import vestie.member.global.jwt.JwtTokenProvider;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

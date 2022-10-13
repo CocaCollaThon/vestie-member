@@ -1,6 +1,7 @@
 package vestie.member.domain.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +18,9 @@ public class SignUpRestController {
     private final MemberService memberService;
 
     @PostMapping("/v1/signUp")
-    ResponseEntity<Long> signUp(@RequestBody SignUpRequest signUpRequest){
-        return ResponseEntity.ok(memberService.signUp(signUpRequest));
+    public ResponseEntity.BodyBuilder signUp(@RequestBody SignUpRequest signUpRequest){
+        memberService.signUp(signUpRequest);
+        return ResponseEntity.status(HttpStatus.CREATED);
     }
 
 }
