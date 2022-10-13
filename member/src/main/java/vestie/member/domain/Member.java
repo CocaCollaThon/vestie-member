@@ -32,4 +32,11 @@ public class Member {
     private String password;
 
     private Long point;
+
+    public boolean matchPassword(String password){
+        if(this.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
 }

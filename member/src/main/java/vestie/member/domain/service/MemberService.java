@@ -48,7 +48,7 @@ public class MemberService {
     public TokenDto login(String username, String password) {
         Member member = memberRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 username 입니다."));
-        if(!member.getPassword().equals(password)){
+        if(!member.matchPassword(password)){
             throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
         }
         return TokenDto.builder().token(jwtTokenProvider.createToken(member)).build();
