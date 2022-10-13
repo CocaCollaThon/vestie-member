@@ -8,5 +8,6 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class UsernameNotFoundException extends RuntimeException {
     private final HttpStatus status = HttpStatus.NOT_FOUND;
+    private final int errorCode = 1;
     private final String errorMessage;
 }

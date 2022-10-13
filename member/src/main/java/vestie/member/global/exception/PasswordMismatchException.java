@@ -8,5 +8,6 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class PasswordMismatchException extends RuntimeException {
     private final HttpStatus status = HttpStatus.CONFLICT;
+    private final int errorCode = 3;
     private final String errorMessage;
 }

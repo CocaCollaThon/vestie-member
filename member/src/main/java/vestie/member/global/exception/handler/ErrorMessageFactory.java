@@ -4,10 +4,10 @@ import org.springframework.http.HttpStatus;
 
 public class ErrorMessageFactory {
 
-    public static ErrorMessage from(HttpStatus status, String errorMessage){
+    public static ErrorMessage from(HttpStatus status, int errorCode,String errorMessage){
         return ErrorMessage.builder()
                 .status(status.value())
-                .error(status.name())
+                .errorCode(errorCode)
                 .message(errorMessage)
                 .build();
     }

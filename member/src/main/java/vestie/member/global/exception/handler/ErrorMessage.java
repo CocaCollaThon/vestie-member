@@ -14,6 +14,6 @@ public class ErrorMessage {
     @Builder.Default
     private String timestamp = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
     private int status;
-    private String error;
+    private int errorCode;
     private String message;
 }
