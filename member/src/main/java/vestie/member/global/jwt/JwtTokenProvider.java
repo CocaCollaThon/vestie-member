@@ -32,7 +32,7 @@ public class JwtTokenProvider {
         String compact = Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
                 .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + Duration.ofMillis(expirationTime).toMillis()))
+                .setExpiration(new Date(now.getTime() + Duration.ofMinutes(expirationTime).toMillis()))
                 .claim("id", member.getId())
                 .claim("username", member.getUsername())
                 .signWith(SignatureAlgorithm.HS256, secretKey)
