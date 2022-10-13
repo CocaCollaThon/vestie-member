@@ -18,6 +18,9 @@ public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String secretKey;
 
+    @Value("${jwt.expiration-time}")
+    private int expirationTime;
+
     // secret key를 base64로 인코딩
     @PostConstruct
     protected void init(){
@@ -26,15 +29,14 @@ public class JwtTokenProvider {
 
     public String createToken(Member member) {
         Date now = new Date();
-        System.out.println(secretKey);
-        return Jwts.builder()
+        String compact = Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setIssuer("fresh")
                 .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + Duration.ofMinutes(30).toMillis()))
+                .setExpiration(new Date(now.getTime() + Duration.ofMillis(expirationTime).toMillis()))
                 .claim("id", member.getId())
                 .claim("username", member.getUsername())
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
+        return compact;
     }
 }
